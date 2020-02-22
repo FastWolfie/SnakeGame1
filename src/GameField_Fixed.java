@@ -4,11 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.image.ImageObserver;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
-import java.util.function.Consumer;
 
 public class GameField_Fixed<i> extends JPanel implements ActionListener{
     private final int Size = 320;
@@ -58,25 +55,21 @@ public class GameField_Fixed<i> extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(inGame) {
             chekApple();
-            //checkCollisions();
+            checkHead();
             move();
         }
         repaint();
     }
 
-    private void checkCollisions() {
+    private void checkHead() {
         Snake.forEach(pos -> {
-            if((pos.getY() >= 0 && pos.getY() <= 20)){
-                System.out.println("Failed");
-                //inGame = false;
-            }
+            Snake.forEach(pos1 -> {
+                if(pos1.getX() == pos.getX() && pos1.getX() == pos.getX()){
+                    inGame = false;
+                }
+            });
         });
-//        for(int x = 0;x< 20  ;x++){
-//            for(int y = 0;y< 20  ;y++){
-//                Snake.add(new Pos(x,y));
-//            }
-//        }
-//        System.out.println("Done");
+
     }
 
     class FieldKeyListener extends KeyAdapter{
