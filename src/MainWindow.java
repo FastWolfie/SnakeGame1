@@ -7,7 +7,7 @@ setTitle("Snake");
 setDefaultCloseOperation(EXIT_ON_CLOSE);
 setSize(320,345);
 setLocation(400,400);
-add(new GameField());
+add(new GameField_Fixed<>());
 setVisible(true);
 
 }
